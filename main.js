@@ -75,7 +75,7 @@ class ECommerceApp {
   async loadProducts() {
     try {
       this.showLoading(true);
-      const response = await fetch('https://dummyjson.com/products?limit=100');
+      const response = await fetch('https://dummyjson.com/products?limit=1000');
       const data = await response.json();
       this.products = data.products;
       this.filteredProducts = [...this.products];
