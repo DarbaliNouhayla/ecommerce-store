@@ -59,7 +59,9 @@ ecommerce-store/
 ```
 👩‍💻 À propos
 Ce projet a été conçu et développé par Nouhayla Darbali dans un objectif d'apprentissage et de mise en pratique des technologies web modernes, en mettant l'accent sur l'expérience utilisateur, la clarté du code et la performance front-end.
+
 check it out here https://darbalinouhayla.github.io/ecommerce-store/
+
 📬 Contact
 GitHub : @DarbaliNouhayla
 
