@@ -39,14 +39,14 @@ git clone https://github.com/DarbaliNouhayla/ecommerce-store.git
 cd ecommerce-store
 Puis ouvre simplement le fichier index.html dans ton navigateur :
 
-bash
+```bash
 
 start index.html   # sous Windows
 open index.html    # sous macOS
 💡 L'application est 100% front-end : elle peut être hébergée sur GitHub Pages, Netlify ou tout serveur statique.
 
 📁 Structure du projet
-bash
+```bash
 
 ecommerce-store/
 ├── index.html               # Fichier principal HTML
