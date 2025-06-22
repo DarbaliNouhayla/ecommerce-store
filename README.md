@@ -46,8 +46,8 @@ open index.html    # sous macOS
 ```
 💡 L'application est 100% front-end : elle peut être hébergée sur GitHub Pages, Netlify ou tout serveur statique.
 
-##📁 Structure du projet
----
+📁 Structure du projet
+
 ```bash
 ecommerce-store/
 ├── index.html               # Fichier principal HTML
@@ -57,15 +57,15 @@ ecommerce-store/
 │   └── js/
 │       └── main.js          # Logique complète de l'application
 ```
-##👩‍💻 À propos
+👩‍💻 À propos
 Ce projet a été conçu et développé par Nouhayla Darbali dans un objectif d'apprentissage et de mise en pratique des technologies web modernes, en mettant l'accent sur l'expérience utilisateur, la clarté du code et la performance front-end.
----
-##📬 Contact
+
+📬 Contact
 GitHub : @DarbaliNouhayla
----
-##⚖️ Licence
+
+⚖️ Licence
 Ce projet est sous licence MIT — vous êtes libre de le réutiliser, le modifier et le distribuer avec attribution.
----
+
 
 
 
