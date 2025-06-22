@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Commerce Store</title>
+    <meta name="description" content="Une boutique en ligne simple et pratique" />
+    <meta name="author" content="E-Commerce Store" />
+
+    <meta property="og:title" content="E-Commerce Store" />
+    <meta property="og:description" content="Une boutique en ligne simple et pratique" />
+    <meta property="og:type" content="website" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./src/styles/main.css">
+  </head>
+
+  <body>
+    <div id="root">
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+          <a class="navbar-brand fw-bold" href="#" onclick="navigateToHome()">
+            <i class="bi bi-shop me-2"></i>E-Shop
+          </a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#" onclick="navigateToHome()">Accueil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="navigateToProducts()">Produits</a>
+              </li>
+            </ul>
+            
+            <div class="d-flex align-items-center">
+              <div class="input-group me-3" style="width: 300px;">
+                <input type="text" class="form-control" placeholder="Rechercher..." id="searchInput">
+                <button class="btn btn-outline-light" type="button" onclick="searchProducts()">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+              
+              <button class="btn btn-outline-light position-relative me-2" onclick="toggleCart()">
+                <i class="bi bi-cart3"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">
+                  0
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="container-fluid mt-5 pt-4">
+        <!-- Home Page -->
+        <div id="homePage" class="page">
+          <!-- Hero Section -->
+          <section class="hero-section bg-gradient-primary text-white py-5 mb-5 rounded">
+            <div class="container text-center">
+              <h1 class="display-4 fw-bold mb-3">Bienvenue sur E-Shop</h1>
+              <p class="lead mb-4">Explorez notre sélection de produits sympas</p>
+              <button class="btn btn-light btn-lg px-4" onclick="navigateToProducts()">
+                Voir les produits <i class="bi bi-arrow-right ms-2"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- Featured Products -->
+          <section class="container">
+            <h2 class="text-center mb-5">Nos favoris</h2>
+            <div id="featuredProducts" class="row g-4">
+              <!-- Featured products will be loaded here -->
+            </div>
+          </section>
+        </div>
+
+        <!-- Products Page -->
+        <div id="productsPage" class="page d-none">
+          <div class="container">
+            <!-- Filters and Sort -->
+            <div class="row mb-4">
+              <div class="col-md-8">
+                <div class="d-flex gap-3 flex-wrap">
+                  <select class="form-select" style="width: auto;" id="categoryFilter">
+                    <option value="">Toutes les catégories</option>
+                  </select>
+                  <select class="form-select" style="width: auto;" id="sortFilter">
+                    <option value="">Trier par...</option>
+                    <option value="title">Nom A-Z</option>
+                    <option value="price-asc">Prix croissant</option>
+                    <option value="price-desc">Prix décroissant</option>
+                    <option value="rating">Mieux notés</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 text-end">
+                <span id="resultsCount" class="text-muted"></span>
+              </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productsGrid" class="row g-4">
+              <!-- Products will be loaded here -->
+            </div>
+
+            <!-- Pagination -->
+            <nav aria-label="Products pagination" class="mt-5">
+              <ul class="pagination justify-content-center" id="pagination">
+                <!-- Pagination will be generated here -->
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Product Detail Page -->
+        <div id="productDetailPage" class="page d-none">
+          <div class="container">
+            <button class="btn btn-outline-primary mb-4" onclick="goBack()">
+              <i class="bi bi-arrow-left me-2"></i>Retour
+            </button>
+            <div id="productDetail">
+              <!-- Product detail will be loaded here -->
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Shopping Cart Sidebar -->
+      <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+          <h5 class="mb-0">Votre panier</h5>
+          <button class="btn-close" onclick="toggleCart()"></button>
+        </div>
+        <div class="cart-body">
+          <div id="cartItems">
+            <!-- Cart items will be loaded here -->
+          </div>
+        </div>
+        <div class="cart-footer">
+          <div class="cart-total">
+            <strong>Total: <span id="cartTotal">0.00 €</span></strong>
+          </div>
+          <button class="btn btn-primary w-100 mt-3" onclick="checkout()">
+            Commander
+          </button>
+        </div>
+      </div>
+
+      <!-- Cart Overlay -->
+      <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+      <!-- Loading Spinner -->
+      <div id="loadingSpinner" class="loading-spinner d-none">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Chargement...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="./src/js/main.js"></script>
+  </body>
+</html>
